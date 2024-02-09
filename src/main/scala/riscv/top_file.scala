@@ -213,7 +213,7 @@ class top_file extends Module {
     //alu control (input) start
     alu_control_module.io.op_code := id_to_ex_module.io.instr_out(7,0)
     alu_control_module.io.fn3 := id_to_ex_module.io.instr_out(14,12)
-    alu_control_module.io.fn7 := id_to_ex_module.io.instr_out(30)
+    alu_control_module.io.fn7 := id_to_ex_module.io.instr_out(31,25)
     //alu control (input) end
     //----------------------------------third pipeline end--------------------------------------
     //----------------------------------forth pipeline start------------------------------------

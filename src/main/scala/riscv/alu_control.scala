@@ -6,7 +6,7 @@ class alu_control extends Module {
         val op_code = Input(UInt(7.W))
         val fn3 = Input(UInt(3.W))
         val fn7 = Input(UInt(7.W))
-        val out = Output(UInt(5.W))
+        val out = Output(UInt(6.W))
     })
     //r type
     when (io.op_code==="b0110011".U){
@@ -49,7 +49,7 @@ class alu_control extends Module {
         }
 
 
-        .elsewhen (io.fn7===1.U){
+        .elsewhen (io.fn7===32.U){
             //sub
             when (io.fn3===0.U){
                 io.out := 17.U
@@ -64,6 +64,18 @@ class alu_control extends Module {
 
 
 
+        }.elsewhen (io.fn7 === 1.U){
+            when (io.fn3 === 0.U){
+                io.out := 29.U
+            }.elsewhen(io.fn3 === 1.U){
+                io.out := 30.U
+            }.elsewhen(io.fn3 === 2.U){
+                io.out := 31.U
+            }.elsewhen(io.fn3 === 3.U){
+                io.out :=  32.U 
+            }.otherwise{
+                io.out := 0.U
+            }
         }
         .otherwise{
             io.out := 0.U
